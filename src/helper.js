@@ -1,13 +1,43 @@
 export default class DistrictRepository {
   constructor(stats) {
     this.stats = stats.reduce((acc, stat) => {
-      if (!acc[stat.Location]) {
-        acc[stat.Location] = {[stat.TimeFrame]: stat.Data}
+      if (!acc[stat.Location.toUpperCase()]) {
+        acc[stat.Location.toUpperCase()] = {
+          location: stat.Location.toUpperCase()            
+        };
+
+        acc[stat.Location.toUpperCase()].stats = {
+          ...acc[stat.Location.toUpperCase()].stats,       
+          [stat.TimeFrame]: isNaN(stat.Data) ? 0 : Math.round(stat.Data * 1000) / 1000
+        };
+
       } else {
-        acc[stat.Location][stat.TimeFrame] = stat.Data
+        acc[stat.Location.toUpperCase()].location = stat.Location.toUpperCase();
+        acc[stat.Location.toUpperCase()].stats = {
+          ...acc[stat.Location.toUpperCase()].stats,       
+          [stat.TimeFrame]: isNaN(stat.Data) ? 0 : Math.round(stat.Data * 1000) / 1000
+        }
       }
       return acc
     }, {})
+  }
+
+  findByName(name) {
+    if (!name) {
+      return
+    } 
+    return this.stats[name.toUpperCase()]
+  }
+
+  findAllMatches(searchVal) {
+    if (!searchVal) {
+      return Object.values(this.stats)
+    } else if (Object.keys(this.stats).includes(searchVal.toUpperCase())){
+      searchVal = searchVal.toUpperCase();
+      return Object.values(this.stats[searchVal])
+    } else {
+      return []
+    }
   }
 
 }
