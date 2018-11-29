@@ -1,1 +1,12 @@
-/*APP COMPONENT RELATED CSS GOES HERE*/
+.title {
+  text-align: center
+}
+
+.search {
+  border: 2px solid black;
+  border-radius: 3px;
+  display: block;
+  font-size: 24px;
+  margin: 0 auto;
+  outline: none;
+}
