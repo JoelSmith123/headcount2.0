@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './Card.css'
 
 const Card = ({ location, stats }) => {
@@ -16,6 +17,11 @@ const Card = ({ location, stats }) => {
       { statPairs }
     </div>
   )
+}
+
+Card.propTypes = {
+  location: PropTypes.string,
+  stats: PropTypes.object
 }
 
 export default Card
