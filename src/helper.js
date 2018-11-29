@@ -22,14 +22,21 @@ export default class DistrictRepository {
     }, {})
   }
 
-  findByName(name) {
+  findByName = (name) => {
     if (!name) {
       return
-    } 
-    return this.stats[name.toUpperCase()]
+    } else {
+      name = name.toUpperCase()
+      const matchingLocations = Object.keys(this.stats).filter(location => {
+        return location.includes(name)
+      })
+      return matchingLocations.map(location => {
+        return this.stats[location]
+      })
+    }
   }
 
-  findAllMatches(searchVal) {
+  findAllMatches = (searchVal) => {
     if (!searchVal) {
       return Object.values(this.stats)
     } else if (Object.keys(this.stats).includes(searchVal.toUpperCase())){

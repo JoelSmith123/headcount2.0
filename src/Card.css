@@ -1,0 +1,27 @@
+.Card {
+  box-sizing: border-box;
+  border: 3px solid #bfbfbf;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 12px;
+  padding: 20px;
+  width: 300px;
+}
+
+.location {
+  margin-top: 0;
+  text-align: center;
+}
+
+.higher-stats {
+  color: #963D5A;
+}
+
+.lower-stats {
+  color: #C589E8;
+}
+
+.stats {
+  text-align: left;
+  margin: 0;
+}
