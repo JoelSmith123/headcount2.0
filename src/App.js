@@ -4,7 +4,6 @@ import './App.css'
 import CardContainer from './CardContainer'
 import DistrictRepository from './helper'
 
-
 class App extends Component {
   constructor() {
     super();
@@ -31,7 +30,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

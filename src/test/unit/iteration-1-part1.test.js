@@ -1,7 +1,7 @@
 import DistrictRepository from '../../helper.js';
 import kinderData from '../../data/kindergartners_in_full_day_program.js';
 
-describe('DistrictRepository iteration 1 - part 1', () =>  {
+describe.only('DistrictRepository iteration 1 - part 1', () =>  {
   const district = new DistrictRepository(kinderData);
 
   test('findByName returns undefined if no arguments are provided', () => {
@@ -13,7 +13,6 @@ describe('DistrictRepository iteration 1 - part 1', () =>  {
   });
 
   test('findByName returns an object with its individual district information', () => {
-
     expect(typeof district.findByName('Colorado')).toEqual('object');
     expect(district.findByName('Colorado').location).toEqual('COLORADO');
   });

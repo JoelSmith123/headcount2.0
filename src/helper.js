@@ -22,16 +22,18 @@ export default class DistrictRepository {
     }, {})
   }
 
+  findAverage = (districtName) => {
+    // console.log(this.stats[districtName])
+    return
+  }
+
   findByName = (name) => {
     if (!name) {
-      return
+      return 
     } else {
       name = name.toUpperCase()
-      const matchingLocations = Object.keys(this.stats).filter(location => {
-        return location.includes(name)
-      })
-      return matchingLocations.map(location => {
-        return this.stats[location]
+      return Object.values(this.stats).find(location => {
+        return location.location === name
       })
     }
   }
@@ -39,12 +41,21 @@ export default class DistrictRepository {
   findAllMatches = (searchVal) => {
     if (!searchVal) {
       return Object.values(this.stats)
-    } else if (Object.keys(this.stats).includes(searchVal.toUpperCase())){
-      searchVal = searchVal.toUpperCase();
-      return Object.values(this.stats[searchVal])
     } else {
-      return []
+      searchVal = searchVal.toUpperCase();
+
+      const matchingLocations = Object.keys(this.stats).filter(location => {
+        return location.includes(searchVal)
+      })
+
+      if (matchingLocations[0] === undefined) {
+        return []
+      } else {
+        return matchingLocations.map(location => {
+          return this.stats[location]
+        })        
+      }
     }
   }
-
 }
+
