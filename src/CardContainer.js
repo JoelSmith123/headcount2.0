@@ -53,8 +53,12 @@ const CardContainer = ({ findAllMatches,
 
 CardContainer.propTypes = {
   findAllMatches: PropTypes.func,
-  findByName: PropTypes.func,
-  searchVal: PropTypes.string
+  updateCardSelect: PropTypes.func,
+  getLocationFromActiveCard: PropTypes.func,
+  searchVal: PropTypes.string,
+  activeCards: PropTypes.array,
+  findAverage: PropTypes.func,
+  compareDistrictAverages: PropTypes.func
 }
 
 export default CardContainer

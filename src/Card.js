@@ -8,10 +8,6 @@ class Card extends Component {
                 displayActiveCard, 
                 findByName, 
                 getLocationFromActiveCard,
-                firstCardTitle,
-                secondCardTitle,
-                firstCardAverage,
-                secondCardAverage,
                 comparedAverages }) {
     super();
     this.state = {
@@ -69,7 +65,11 @@ class Card extends Component {
 
 Card.propTypes = {
   location: PropTypes.string,
-  stats: PropTypes.object
+  stats: PropTypes.object,
+  displayActiveCard: PropTypes.bool,
+  findByName: PropTypes.func,
+  getLocationFromActiveCard: PropTypes.func,
+  comparedAverages: PropTypes.object
 }
 
 export default Card
