@@ -10,15 +10,6 @@ class Card extends Component {
                 getLocationFromActiveCard,
                 comparedAverages }) {
     super();
-    this.state = {
-      selected: false
-    }
-  }
-
-  componentDidMount() {
-    if (this.props.displayActiveCard) {
-      this.setState({selected: true})
-    }
   }
 
   cardStats = () => {
@@ -31,19 +22,13 @@ class Card extends Component {
   }
 
   handleClick = (event) => {
-    const prevSelectedState = this.state.selected
-
-    this.setState({
-      selected: !prevSelectedState
-    })
-
     this.props.getLocationFromActiveCard(this.props.location)
   }
 
   render() {
-    if (!this.props.firstCardTitle) {
+    if (!this.props.comparedAverages) {
       return (
-        <div className={this.state.selected ? 'Card active-card' : 'Card'} onClick={this.handleClick}>
+        <div className={this.props.displayActiveCard ? 'Card active-card' : 'Card'} onClick={this.handleClick}>
           <h3 className='location'>{this.props.location}</h3>
             { this.cardStats() }
         </div>
