@@ -30,9 +30,13 @@ class App extends Component {
   }
 
   getLocationFromActiveCard = (location) => {
-    this.setState({
-      activeCards: [...this.state.activeCards, location]
-    })
+    if (this.state.activeCards.length <= 1) {
+      this.setState({
+        activeCards: [...this.state.activeCards, location]
+      })      
+    } else {
+      return
+    }
   }
 
 
