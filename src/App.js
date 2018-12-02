@@ -43,9 +43,11 @@ class App extends Component {
   render() {
     const { findAllMatches, findAverage, compareDistrictAverages } = this.state.repository
     return (
-      <div>
-        <h1 className='title'>Welcome To Headcount 2.0</h1>
-        <input className='search' type='search' value={this.state.searchVal} onChange={this.handleSearchChange} placeholder=' Search...' />
+      <div className='App'>
+        <header className='header'>
+          <h1 className='title'>Welcome To Headcount 2.0</h1>
+          <input className='search' type='search' value={this.state.searchVal} onChange={this.handleSearchChange} placeholder=' Search by district name...' />
+        </header>
         <CardContainer  findAllMatches={findAllMatches}
                         updateCardSelect={this.updateCardSelect}
                         getLocationFromActiveCard={this.getLocationFromActiveCard}
