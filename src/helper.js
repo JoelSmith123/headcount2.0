@@ -40,7 +40,9 @@ export default class DistrictRepository {
     const districtOneAvg = this.findAverage(districtOne)
     const districtTwoAvg = this.findAverage(districtTwo)
 
-    return {[districtOne]: districtOneAvg, [districtTwo]: districtTwoAvg, 'compared': Math.round((districtOneAvg / districtTwoAvg) * 1000) / 1000}
+    return {[districtOne]: districtOneAvg,
+            [districtTwo]: districtTwoAvg,
+            'compared': Math.round((districtOneAvg / districtTwoAvg) * 1000) / 1000}
   }
 
   findByName = (name) => {

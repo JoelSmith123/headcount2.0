@@ -9,7 +9,8 @@ class App extends Component {
     super();
     this.state = {
       repository: new DistrictRepository(kinderData),
-      searchVal: ''
+      searchVal: '',
+      activeCard: ''
     }
   }
 
@@ -19,13 +20,25 @@ class App extends Component {
     })
   }
 
+  updateCardSelect = () => {
+    const { findByName } = this.state.repository
+    return findByName(this.state.activeCard)
+  }
+
+  getLocationFromActiveCard = (location) => {
+    this.setState({
+      activeCard: location
+    })
+  }
+
+
   render() {
     const { findAllMatches, findByName } = this.state.repository
     return (
       <div>
         <h1 className='title'>Welcome To Headcount 2.0</h1>
         <input className='search' type='search' value={this.state.searchVal} onChange={this.handleSearchChange} placeholder=' Search...' />
-        <CardContainer findAllMatches={findAllMatches} findByName={findByName} searchVal={this.state.searchVal} />
+        <CardContainer findAllMatches={findAllMatches} updateCardSelect={this.updateCardSelect} getLocationFromActiveCard={this.getLocationFromActiveCard} searchVal={this.state.searchVal} activeCard={this.state.activeCard} />
       </div>
     );
   }
