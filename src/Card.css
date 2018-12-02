@@ -8,17 +8,21 @@
   width: 300px;
 }
 
+.active-card {
+  border: 3px solid #4C4CFF;
+}
+
 .location {
   margin-top: 0;
   text-align: center;
 }
 
 .higher-stats {
-  color: #963D5A;
+  color: #267f26;
 }
 
 .lower-stats {
-  color: #C589E8;
+  color: #44e544;
 }
 
 .stats {
