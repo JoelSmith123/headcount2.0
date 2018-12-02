@@ -3,10 +3,25 @@ import PropTypes from 'prop-types'
 import './Card.css'
 
 class Card extends Component {
-  constructor({ location, stats, displayActiveCard, findByName, getLocationFromActiveCard }) {
+  constructor({ location,
+                stats, 
+                displayActiveCard, 
+                findByName, 
+                getLocationFromActiveCard,
+                firstCardTitle,
+                secondCardTitle,
+                firstCardAverage,
+                secondCardAverage,
+                comparedAverages }) {
     super();
     this.state = {
       selected: false
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.displayActiveCard) {
+      this.setState({selected: true})
     }
   }
 
@@ -30,12 +45,25 @@ class Card extends Component {
   }
 
   render() {
-    return (
-      <div className={this.state.selected ? 'Card active-card' : 'Card'} onClick={this.handleClick}>
-        <h3 className='location'>{this.props.location}</h3>
-          { this.cardStats() }
-      </div>
-    )    
+    if (!this.props.firstCardTitle) {
+      return (
+        <div className={this.state.selected ? 'Card active-card' : 'Card'} onClick={this.handleClick}>
+          <h3 className='location'>{this.props.location}</h3>
+            { this.cardStats() }
+        </div>
+      )          
+    } else {
+      return (
+        <div className='Card active-card comparing-card'>
+          <h3 className='location location-comparison'>{Object.keys(this.props.comparedAverages)[0]}:</h3>
+          <h3 className='average'>{Object.values(this.props.comparedAverages)[0]}</h3>
+          <h3 className='combined-average-title'>COMBINED AVERAGE:</h3>
+          <h3 className='combined-average-value'>{Object.values(this.props.comparedAverages)[2]}</h3>
+          <h3 className='location location-comparison'>{Object.keys(this.props.comparedAverages)[1]}:</h3>
+          <h3 className='average'>{Object.values(this.props.comparedAverages)[1]}</h3>
+        </div>
+      )
+    }
   }
 }
 
@@ -45,3 +73,4 @@ Card.propTypes = {
 }
 
 export default Card
+

@@ -1,3 +1,12 @@
 .CardContainer {
   text-align: center;
 }
+
+.selected-cards {
+  display: flex;
+  justify-content: center;
+}
+
+.selected-cards-active {
+  margin: 50px 0;
+}

@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       repository: new DistrictRepository(kinderData),
       searchVal: '',
-      activeCard: ''
+      activeCards: []
     }
   }
 
@@ -22,23 +22,33 @@ class App extends Component {
 
   updateCardSelect = () => {
     const { findByName } = this.state.repository
-    return findByName(this.state.activeCard)
+    const activeCardArr = []
+    for(let i=0; i<this.state.activeCards.length; i++) {
+      activeCardArr.push(findByName(this.state.activeCards[i]))
+    }
+    return activeCardArr
   }
 
   getLocationFromActiveCard = (location) => {
     this.setState({
-      activeCard: location
+      activeCards: [...this.state.activeCards, location]
     })
   }
 
 
   render() {
-    const { findAllMatches, findByName } = this.state.repository
+    const { findAllMatches, findAverage, compareDistrictAverages } = this.state.repository
     return (
       <div>
         <h1 className='title'>Welcome To Headcount 2.0</h1>
         <input className='search' type='search' value={this.state.searchVal} onChange={this.handleSearchChange} placeholder=' Search...' />
-        <CardContainer findAllMatches={findAllMatches} updateCardSelect={this.updateCardSelect} getLocationFromActiveCard={this.getLocationFromActiveCard} searchVal={this.state.searchVal} activeCard={this.state.activeCard} />
+        <CardContainer  findAllMatches={findAllMatches}
+                        updateCardSelect={this.updateCardSelect}
+                        getLocationFromActiveCard={this.getLocationFromActiveCard}
+                        searchVal={this.state.searchVal} 
+                        activeCards={this.state.activeCards}
+                        findAverage={findAverage}
+                        compareDistrictAverages={compareDistrictAverages} />
       </div>
     );
   }
