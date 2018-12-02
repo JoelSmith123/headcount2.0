@@ -35,10 +35,13 @@ class App extends Component {
         activeCards: [...this.state.activeCards, location]
       })      
     } else {
-      return
+      const replacedActiveCards = [...this.state.activeCards]
+      replacedActiveCards.splice(1, 1, location)
+      this.setState({
+        activeCards: replacedActiveCards
+      })
     }
   }
-
 
   render() {
     const { findAllMatches, findAverage, compareDistrictAverages } = this.state.repository
