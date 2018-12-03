@@ -23,9 +23,9 @@ class App extends Component {
   updateCardSelect = () => {
     const { findByName } = this.state.repository
     const activeCardArr = []
-    for(let i=0; i<this.state.activeCards.length; i++) {
-      activeCardArr.push(findByName(this.state.activeCards[i]))
-    }
+    this.state.activeCards.forEach(activeCard => {
+      activeCardArr.push(findByName(activeCard))
+    })
     return activeCardArr
   }
 
