@@ -22,11 +22,10 @@ class App extends Component {
 
   updateCardSelect = () => {
     const { findByName } = this.state.repository
-    const activeCardArr = []
-    this.state.activeCards.forEach(activeCard => {
-      activeCardArr.push(findByName(activeCard))
-    })
-    return activeCardArr
+    return this.state.activeCards.reduce((acc, activeCard) => {
+      acc.push(findByName(activeCard))
+      return acc
+    }, [])
   }
 
   getLocationFromActiveCard = (location) => {
